@@ -1,36 +1,164 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎸 FingerstyleKz
 
-## Getting Started
+> **Қазақша әндерге арналған сапалы fingerstyle табулатура**  
+> **Качественные фингерстайл табы для казахских песен**
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🇰🇿 Қазақша
+
+### Жоба туралы
+**FingerstyleKz** — бұл қазақ әндерін гитарада (fingerstyle орындау мәнерінде) сапалы әрі әдемі ойнауға көмектесетін заманауи платформа. Біздің басты мақсатымыз — гитарашыларға **ыңғайлы**, **түсінікті** және **кәсіби** деңгейде жазылған дайын табтарды ұсыну.
+
+### Мүмкіндіктер (Features)
+- **🛍️ Каталог**: Табтарды іздеу, сүзгілеу (Easy/Medium/Hard) және толық сипаттамасын көру.
+- **📱 Mobile-First**: Телефоннан қолдануға өте ыңғайлы, заманауи дизайн.
+- **🎨 Premium Dark UI**: Neon стиліндегі әдемі әрі көзге жайлы интерфейс.
+- **⚡ Жылдамдық**: Next.js арқасында сайт өте жылдам жүктеледі.
+- **🔐 Админ панель**: Жаңа табтар қосу, бағаларды өзгерту және сайт баптауларын басқару (тек администраторлар үшін).
+
+### Қалай сатып алуға болады?
+Бұл MVP нұсқада "қолмен сатып алу" жүйесі қолданылады:
+1. Табты таңдап, **"Сатып алу"** түймесін басасыз.
+2. Сайт сізді автоматты түрде **Telegram** немесе **WhatsApp**-қа бағыттайды.
+3. Хабарламада табтың аты мен бағасы дайын тұрады.
+4. Төлем жасаған соң, файлдарды (PDF/GPX) сол чатқа жібереміз.
+
+---
+
+## 🇷🇺 Русский
+
+### О проекте
+**FingerstyleKz** — современная платформа для гитаристов, желающих играть казахские песни в стиле фингерстайл. Мы предоставляем **качественные**, **проверенные** и **профессионально оформленные** табы (ноты) для удобного изучения.
+
+### Возможности (Features)
+- **🛍️ Каталог**: Поиск, фильтрация по сложности (Easy/Medium/Hard) и детальный просмотр.
+- **📱 Mobile-First**: Адаптивный дизайн, идеально работающий на смартфонах.
+- **🎨 Premium Dark UI**: Стильный темный интерфейс с неоновыми акцентами.
+- **⚡ Производительность**: Мгновенная загрузка страниц благодаря Next.js.
+- **🔐 Админ-панель**: Управление контентом, добавление табов и настроек (защищено Supabase Auth).
+
+### Как купить?
+В текущей версии реализован "ручной" процесс покупки:
+1. Выбираете таб и нажимаете **"Купить"**.
+2. Сайт перенаправляет вас в **Telegram** или **WhatsApp**.
+3. В сообщении уже будет указано название таба и цена.
+4. После оплаты мы отправляем файлы (PDF/GPX) прямо в чат.
+
+---
+
+## 🛠 Технологии / Tech Stack
+
+- **Frontend**: [Next.js 15 (App Router)](https://nextjs.org), React 18
+- **Styling**: [Tailwind CSS v3](https://tailwindcss.com), [shadcn/ui](https://ui.shadcn.com)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Backend / Auth / DB**: [Supabase](https://supabase.com) (PostgreSQL + RLS)
+- **Icons**: Lucide React
+
+---
+
+## 🚀 Быстрый старт (Local Development)
+
+### Талаптар / Requirements
+- Node.js 18+
+- npm
+
+### Орнату / Installation
+
+1. **Репозиторийді жүктеу / Клонировать репозиторий:**
+   ```bash
+   git clone https://github.com/your-username/fingerstyle-kz.git
+   cd fingerstyle-kz
+   ```
+
+2. **Тәуелділіктерді орнату / Установить зависимости:**
+   ```bash
+   npm install
+   ```
+
+3. **.env файлын баптау / Настройка .env:**
+   `env.example` файлын көшіріп, `.env.local` деп атаңыз:
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Мазмұнын толтырыңыз / Заполните переменные:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+   ```
+
+4. **Жергілікті серверді қосу / Запуск локального сервера:**
+   ```bash
+   npm run dev
+   ```
+   Сайт мына мекенжайда ашылады: `http://localhost:3000`
+
+---
+
+## 🗄️ Supabase Setup
+
+1. **Create Project**: Supabase-те жаңа жоба ашыңыз.
+2. **SQL Migration**:
+   - `migrations/initial_schema.sql` файлын ашыңыз.
+   - Supabase Dashboard -> **SQL Editor** бөліміне кодты көшіріп, **RUN** басыңыз.
+   - Бұл барлық кестелерді (tables) және қауіпсіздік ережелерін (RLS) құрады.
+3. **Create Admin**:
+   - Supabase Dashboard -> **Authentication** -> **Users**.
+   - Жаңа email/password қосыңыз (admin үшін).
+
+---
+
+## ☁️ Деплой (Vercel)
+
+1. [Vercel](https://vercel.com)-ге GitHub репозиторийді қосыңыз.
+2. **Environment Variables** бөлімінде `.env.local` ішіндегі айнымалыларды қосыңыз:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+3. **Deploy** басыңыз.
+
+---
+
+## 📂 Жоба құрылымы / Project Structure
+
+```
+app/
+├── (admin)/        # Админ панель (Protected)
+├── (public)/       # Публичные страницы (Home, Tabs)
+├── api/            # API Routes (если есть)
+├── globals.css     # Global styles
+└── layout.tsx      # Root layout
+components/
+├── ui/             # shadcn/ui components
+├── home/           # Landing page sections
+├── admin/          # Admin specific components
+└── shared/         # Reusable components
+lib/
+├── supabase/       # Supabase clients (server/client)
+└── utils.ts        # Helper functions
+supabase/
+└── migrations/     # SQL scripts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🗺️ Roadmap
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [x] MVP Launch (Manual Purchase)
+- [ ] 🎥 Видео-сабақтар интеграциясы (Video Integration)
+- [ ] 💳 Автоматты төлем жүйесі (Stripe/Kaspi QR)
+- [ ] 🌍 Көптілділік (Full i18n support)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📞 Байланыс / Контакты
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Егер сұрақтарыңыз болса немесе ынтымақтастық ұсынғыңыз келсе:
+Если есть вопросы или предложения о сотрудничестве:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Telegram**: [@fingerstylekz](https://t.me/placeholder)
+- **WhatsApp**: [+7 700 000 00 00](https://wa.me/77000000000)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Made with ❤️ in Kazakhstan
