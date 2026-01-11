@@ -7,6 +7,8 @@ import { FAQ } from "@/components/home/FAQ"
 import { FinalCTA } from "@/components/home/FinalCTA"
 import { cookies } from "next/headers"
 
+import { LatestNews } from "@/components/home/LatestNews"
+
 export const revalidate = 0
 
 export default async function Home() {
@@ -16,9 +18,10 @@ export default async function Home() {
   return (
     <main className="flex flex-col min-h-screen">
       <LandingHero />
+      <FeaturedTabs locale={locale} />
       <HowItWorks />
       <WhyUs />
-      <FeaturedTabs locale={locale} />
+      <LatestNews locale={locale} />
       <AboutStory />
       <FAQ />
       <FinalCTA />

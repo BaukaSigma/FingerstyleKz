@@ -24,6 +24,11 @@ export function Header({ locale }: { locale: string }) {
                             <Music2 className="h-4 w-4" />
                         </Button>
                     </Link>
+                    <Link href="/news">
+                        <Button variant="ghost" size="sm" className="hidden sm:inline-flex">
+                            {locale === 'ru' ? 'Новости' : 'Жаңалықтар'}
+                        </Button>
+                    </Link>
                     <LanguageSwitcher current={locale} />
                 </div>
             </div>

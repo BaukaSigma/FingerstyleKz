@@ -26,6 +26,7 @@ export function TabForm({ initialData }: { initialData?: Tab | null }) {
         price_kzt: 1000,
         formats: ['PDF'],
         is_published: false,
+        promo_1plus1: false,
         tags: [],
         youtube_embed_url: '',
         code: ''
@@ -98,9 +99,11 @@ export function TabForm({ initialData }: { initialData?: Tab | null }) {
             slug,
             code,
             youtube_embed_url: getYoutubeEmbedUrl(formData.youtube_embed_url || ''),
-            price_kzt: Number(formData.price_kzt), // ensure number
+            price_kzt: Number(formData.price_kzt),
             capo: formData.capo ? Number(formData.capo) : null,
+            // @ts-ignore - fixing legacy type mismatch if any
             tempo_bpm: formData.tempo_bpm ? Number(formData.tempo_bpm) : null,
+            promo_1plus1: formData.promo_1plus1 || false
         }
 
         let error
@@ -130,13 +133,24 @@ export function TabForm({ initialData }: { initialData?: Tab | null }) {
                 <span className="text-sm text-muted-foreground">Back to list</span>
             </div>
 
-            {/* Status Card */}
-            <div className="p-4 border rounded-lg bg-card/50 flex items-center justify-between">
-                <Label>Published Status</Label>
-                <Switch
-                    checked={formData.is_published}
-                    onCheckedChange={checked => setFormData({ ...formData, is_published: checked })}
-                />
+            <div className="p-4 border rounded-lg bg-card/50 flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                    <Label>Published Status</Label>
+                    <Switch
+                        checked={formData.is_published}
+                        onCheckedChange={checked => setFormData({ ...formData, is_published: checked })}
+                    />
+                </div>
+                <div className="flex items-center justify-between border-t border-border/50 pt-4">
+                    <div className="flex flex-col">
+                        <Label>Promo 1+1 (Buy 1 Get 1 Free)</Label>
+                        <span className="text-xs text-muted-foreground">User picks 2nd tab for free</span>
+                    </div>
+                    <Switch
+                        checked={formData.promo_1plus1}
+                        onCheckedChange={checked => setFormData({ ...formData, promo_1plus1: checked })}
+                    />
+                </div>
             </div>
 
             <div className="space-y-2">

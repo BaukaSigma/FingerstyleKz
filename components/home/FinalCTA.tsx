@@ -3,40 +3,39 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 
 export function FinalCTA() {
     return (
-        <section className="py-24 px-4 relative">
-            <div className="container mx-auto max-w-4xl relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-20 blur-3xl rounded-3xl" />
-
+        <section className="py-12 md:py-24 px-4">
+            <div className="container mx-auto">
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.98 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="relative bg-card border border-white/10 rounded-3xl p-12 md:p-20 text-center overflow-hidden"
+                    className="relative rounded-[2.5rem] overflow-hidden bg-primary px-6 py-16 md:px-20 md:py-24 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-10"
                 >
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                    {/* Background Pattern */}
+                    <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-white/20 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/3" />
 
-                    <h2 className="text-4xl md:text-5xl font-bold mb-8">
-                        Гитараны қазақша сөйлеткің келе ме?
-                    </h2>
-                    <p className="text-xl text-muted-foreground mb-10 max-w-xl mx-auto">
-                        Бүгін баста. Ең сапалы табтар сені күтіп тұр.
-                    </p>
+                    <div className="relative z-10 max-w-2xl">
+                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                            Гитарада ойнауды <br /> жаңа деңгейге көтер.
+                        </h2>
+                        <p className="text-primary-foreground/80 text-lg md:text-xl">
+                            Сапалы табтар, таза дыбыс және қазақ әндерінің қайталанбас атмосферасы.
+                        </p>
+                    </div>
 
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <div className="relative z-10 whitespace-nowrap">
                         <Link href="/tabs">
-                            <Button size="lg" className="h-14 px-10 text-lg rounded-full w-full sm:w-auto">
-                                Табтарды көру
-                            </Button>
-                        </Link>
-                        <Link href="/contact">
-                            <Button variant="outline" size="lg" className="h-14 px-10 text-lg rounded-full w-full sm:w-auto">
-                                Байланысу
+                            <Button size="lg" className="h-16 px-10 text-lg font-bold rounded-full bg-white text-primary hover:bg-white/90 shadow-xl w-full sm:w-auto">
+                                Каталогқа өту <ArrowRight className="ml-2 w-5 h-5" />
                             </Button>
                         </Link>
                     </div>
+
                 </motion.div>
             </div>
         </section>

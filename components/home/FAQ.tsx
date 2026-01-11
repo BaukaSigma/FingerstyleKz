@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from "framer-motion"
 import {
     Accordion,
     AccordionContent,
@@ -11,47 +10,52 @@ import {
 const faqData = [
     {
         q: "Табтарды қандай форматта аламын?",
-        a: "Көбіне PDF және GPX форматында. PDF файлды кез келген телефоннан ашуға болады. Ал GPX файлын Guitar Pro бағдарламасымен ашып, әуенді тыңдап, темпті өзгертуге болады."
+        a: "Көбіне PDF және GPX форматында. PDF файлды кез келген телефоннан ашуға болады. Guitar Pro (GPX) файлын арнайы бағдарламамен ашып, ноталарды тыңдауға болады."
     },
     {
-        q: "Сатып алғаннан кейін қанша уақытта жібересіздер?",
-        a: "Біз автоматты жүйе емеспіз, бірақ өте жылдам жұмыс істейміз. Төлеміңіз расталысымен (әдетте 5-15 минут ішінде) файлдарды Telegram не WhatsApp арқылы жібереміз."
+        q: "Төлем қалай жасалады?",
+        a: "Қазіргі уақытта Kaspi Gold арқылы. Telegram/WhatsApp-қа өткен соң реквизиттерді жібереміз. Болашақта сайттан тікелей төлеу қосылады."
     },
     {
-        q: "GPX деген не?",
-        a: "Бұл Guitar Pro бағдарламасының файлы. Ол жаңадан үйреніп жүргендерге өте пайдалы: ноталардың қалай естілуі керектігін көрсетеді, және қиын жерлерді баяулатып үйренуге мүмкіндік береді."
+        q: "Сатып алған соң файл қашан келеді?",
+        a: "Төлем расталған соң 5-10 минут ішінде. Біз (админдер) сізге файлдарды жеке чатқа жібереміз."
     },
     {
-        q: "Видео жоқ табтар бар ма?",
-        a: "Иә, кейбір ескі немесе қарапайым табтар тек нота форматында болуы мүмкін. Бірақ табтың сипаттамасында видео бар-жоғы міндетті түрде жазылады."
+        q: "Видео-сабақ бар ма?",
+        a: "Кейбір табтарда бар, кейбірінде тек нота. Табтың картасында 'Play' белгісі болса, видеосы бар деген сөз. Сондай-ақ сипаттамасын оқыңыз."
     },
     {
-        q: "Маған қиын болып жатса көмектесесіздер ме?",
-        a: "Әрине! Егер бір жерін түсінбей жатсаңыз немесе техникалық қиындықтар болса, бізге жазыңыз. Қолдан келгенше түсіндіріп, көмектесуге дайынбыз."
+        q: "Қиын әнді үйрене аламын ба?",
+        a: "Біздің табтарда деңгейлер (Easy, Medium, Hard) көрсетілген. GPX файл арқылы темпті баяулатып үйрену өте оңай."
     }
 ]
 
 export function FAQ() {
     return (
-        <section className="py-24 bg-black/40">
-            <div className="container px-4 mx-auto max-w-2xl">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold mb-4">Жиі қойылатын сұрақтар</h2>
-                    <p className="text-muted-foreground">Егер басқа сұрағыңыз болса, бізге жазыңыз</p>
+        <section className="py-24 bg-background">
+            <div className="container px-4 md:px-6 mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+
+                <div className="md:col-span-1">
+                    <h2 className="text-3xl font-bold tracking-tight mb-4">Сұрақ-жауап</h2>
+                    <p className="text-muted-foreground mb-6">Жиі қойылатын сұрақтарға жауаптар. Егер таппасаңыз, бізге жазыңыз.</p>
+                    <div className="h-[1px] w-12 bg-primary/50" />
                 </div>
 
-                <Accordion type="single" collapsible className="w-full">
-                    {faqData.map((item, index) => (
-                        <AccordionItem key={index} value={`item-${index}`} className="border-white/10">
-                            <AccordionTrigger className="text-left text-lg hover:text-primary transition-colors">
-                                {item.q}
-                            </AccordionTrigger>
-                            <AccordionContent className="text-muted-foreground leading-relaxed">
-                                {item.a}
-                            </AccordionContent>
-                        </AccordionItem>
-                    ))}
-                </Accordion>
+                <div className="md:col-span-2">
+                    <Accordion type="single" collapsible className="w-full space-y-4">
+                        {faqData.map((item, index) => (
+                            <AccordionItem key={index} value={`item-${index}`} className="border border-white/5 rounded-lg px-4 bg-white/[0.02]">
+                                <AccordionTrigger className="text-left text-base font-medium hover:text-primary hover:no-underline py-5">
+                                    {item.q}
+                                </AccordionTrigger>
+                                <AccordionContent className="text-muted-foreground leading-relaxed pb-5">
+                                    {item.a}
+                                </AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
+                </div>
+
             </div>
         </section>
     )

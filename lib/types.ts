@@ -14,9 +14,28 @@ export interface Tab {
     formats: string[]
     tuning?: string | null
     capo?: number | null
-    tempo_bpm?: number | null
     tags?: string[] | null
     is_published: boolean
+    promo_1plus1: boolean
+    created_at: string
+    updated_at: string
+}
+
+export interface Post {
+    id: string
+    slug: string
+    status: 'draft' | 'published'
+    pinned: boolean
+    category: string
+    tags: string[]
+    published_at?: string | null
+    title_ru: string
+    title_kz: string
+    excerpt_ru?: string | null
+    excerpt_kz?: string | null
+    cover_url?: string | null
+    content_ru_md: string
+    content_kz_md: string
     created_at: string
     updated_at: string
 }

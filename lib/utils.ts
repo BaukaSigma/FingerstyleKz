@@ -6,11 +6,9 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatPrice(amount: number) {
-    return new Intl.NumberFormat('kk-KZ', {
-        style: 'currency',
-        currency: 'KZT',
-        maximumFractionDigits: 0,
-    }).format(amount)
+    // Hardcoded to ensure SSG/SSR match exactly
+    // e.g. 1 000 ₸
+    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " ₸"
 }
 
 export function getYoutubeEmbedUrl(url: string | null): string | null {

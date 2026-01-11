@@ -26,7 +26,12 @@ export function TabCard({ tab, locale }: TabCardProps) {
             <Card className="h-full overflow-hidden hover:border-primary/50 transition-colors group bg-card/50 backdrop-blur-sm">
                 <CardHeader className="p-4 space-y-2">
                     <div className="flex justify-between items-start">
-                        <Badge variant={diff.color}>{diff.label}</Badge>
+                        <div className="flex gap-2">
+                            <Badge variant={diff.color}>{diff.label}</Badge>
+                            {tab.promo_1plus1 && (
+                                <Badge className="bg-purple-500/20 text-purple-400 border-purple-500/30 hover:bg-purple-500/30">1+1</Badge>
+                            )}
+                        </div>
                         {tab.youtube_embed_url && <PlayCircle className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />}
                     </div>
                     <div>

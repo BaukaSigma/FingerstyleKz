@@ -23,6 +23,12 @@ export default function DashboardLayout({
                             Tabs
                         </Button>
                     </Link>
+                    <Link href="/admin/news">
+                        <Button variant="ghost" className="w-full justify-start gap-2">
+                            <FileMusic className="w-4 h-4 rotate-180" /> {/* Reusing icon for now or use Newspaper if imported */}
+                            News
+                        </Button>
+                    </Link>
                     <Link href="/admin/settings">
                         <Button variant="ghost" className="w-full justify-start gap-2">
                             <Settings className="w-4 h-4" />

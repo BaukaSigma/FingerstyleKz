@@ -106,6 +106,11 @@ export default async function TabPage({ params }: { params: Promise<{ slug: stri
                 <div className="hidden sm:block p-8 border border-primary/20 rounded-2xl bg-gradient-to-b from-card to-background shadow-lg text-center">
                     <div className="mb-6">
                         <span className="text-4xl font-bold text-primary">{formatPrice(tab.price_kzt)}</span>
+                        {tab.promo_1plus1 && (
+                            <div className="mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-sm font-bold animate-pulse">
+                                <Gift className="w-4 h-4" /> 1+1 FREE
+                            </div>
+                        )}
                     </div>
                     <p className="text-sm text-muted-foreground mb-6 max-w-sm mx-auto">
                         {t.deliveryNote}
@@ -121,6 +126,8 @@ export default async function TabPage({ params }: { params: Promise<{ slug: stri
                             whatsapp={whatsapp}
                             locale={locale}
                             mobileSticky={false}
+                            promo_1plus1={tab.promo_1plus1}
+                            currentTabId={tab.id}
                         />
                     </div>
                 </div>
@@ -136,6 +143,8 @@ export default async function TabPage({ params }: { params: Promise<{ slug: stri
                 whatsapp={whatsapp}
                 locale={locale}
                 mobileSticky={true}
+                promo_1plus1={tab.promo_1plus1}
+                currentTabId={tab.id}
             />
         </div>
     )
