@@ -14,6 +14,7 @@ export interface Tab {
     formats: string[]
     tuning?: string | null
     capo?: number | null
+    tempo_bpm?: number | null
     tags?: string[] | null
     is_published: boolean
     promo_1plus1: boolean
