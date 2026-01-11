@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { formatPrice, getYoutubeEmbedUrl } from "@/lib/utils"
 import { BuyActions } from "@/components/tabs/BuyActions"
 import { cookies } from "next/headers"
+import { Gift } from "lucide-react"
 
 export const revalidate = 0
 
