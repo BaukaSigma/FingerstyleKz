@@ -42,9 +42,16 @@ export function TabCard({ tab, locale }: TabCardProps) {
                     </div>
                 </CardHeader>
                 <CardContent className="p-4 pt-0">
-                    <p className="text-xl font-bold text-primary">
-                        {formatPrice(tab.price_kzt)}
-                    </p>
+                    <div className="flex flex-col">
+                        {tab.original_price_kzt && tab.original_price_kzt > tab.price_kzt && (
+                            <span className="text-xs text-red-500 line-through decoration-red-500/50">
+                                {formatPrice(tab.original_price_kzt)}
+                            </span>
+                        )}
+                        <span className={`text-xl font-bold ${tab.original_price_kzt ? 'text-green-500' : 'text-primary'}`}>
+                            {formatPrice(tab.price_kzt)}
+                        </span>
+                    </div>
                 </CardContent>
             </Card>
         </Link>

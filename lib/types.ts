@@ -10,6 +10,7 @@ export interface Tab {
     description_ru?: string | null
     difficulty: 'easy' | 'medium' | 'hard'
     price_kzt: number
+    original_price_kzt?: number | null
     youtube_embed_url?: string | null
     formats: string[]
     tuning?: string | null

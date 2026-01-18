@@ -100,6 +100,7 @@ export function TabForm({ initialData }: { initialData?: Tab | null }) {
             code,
             youtube_embed_url: getYoutubeEmbedUrl(formData.youtube_embed_url || ''),
             price_kzt: Number(formData.price_kzt),
+            original_price_kzt: formData.original_price_kzt ? Number(formData.original_price_kzt) : null,
             capo: formData.capo ? Number(formData.capo) : null,
             // @ts-ignore - fixing legacy type mismatch if any
             tempo_bpm: formData.tempo_bpm ? Number(formData.tempo_bpm) : null,
@@ -174,17 +175,27 @@ export function TabForm({ initialData }: { initialData?: Tab | null }) {
                     <Input type="number" value={formData.price_kzt || ''} onChange={e => setFormData({ ...formData, price_kzt: Number(e.target.value) })} required min={0} />
                 </div>
                 <div className="space-y-2">
-                    <Label>Difficulty</Label>
-                    <select
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background disabled:cursor-not-allowed disabled:opacity-50"
-                        value={formData.difficulty}
-                        onChange={e => setFormData({ ...formData, difficulty: e.target.value as any })}
-                    >
-                        <option value="easy">Easy</option>
-                        <option value="medium">Medium</option>
-                        <option value="hard">Hard</option>
-                    </select>
+                    <Label>Original Price (Old Price)</Label>
+                    <Input
+                        type="number"
+                        value={formData.original_price_kzt || ''}
+                        onChange={e => setFormData({ ...formData, original_price_kzt: e.target.value ? Number(e.target.value) : null })}
+                        placeholder="Optional (shows discount)"
+                    />
                 </div>
+            </div>
+
+            <div className="space-y-2">
+                <Label>Difficulty</Label>
+                <select
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background disabled:cursor-not-allowed disabled:opacity-50"
+                    value={formData.difficulty}
+                    onChange={e => setFormData({ ...formData, difficulty: e.target.value as any })}
+                >
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
             </div>
 
             <div className="space-y-2">

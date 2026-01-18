@@ -106,7 +106,16 @@ export default async function TabPage({ params }: { params: Promise<{ slug: stri
                 {/* Desktop Buy Block */}
                 <div className="hidden sm:block p-8 border border-primary/20 rounded-2xl bg-gradient-to-b from-card to-background shadow-lg text-center">
                     <div className="mb-6">
-                        <span className="text-4xl font-bold text-primary">{formatPrice(tab.price_kzt)}</span>
+                        <div className="flex flex-col items-center justify-center">
+                            {tab.original_price_kzt && tab.original_price_kzt > tab.price_kzt && (
+                                <span className="text-lg text-red-500 line-through decoration-red-500/50 mb-1">
+                                    {formatPrice(tab.original_price_kzt)}
+                                </span>
+                            )}
+                            <span className={`text-4xl font-bold ${tab.original_price_kzt ? 'text-green-400' : 'text-primary'}`}>
+                                {formatPrice(tab.price_kzt)}
+                            </span>
+                        </div>
                         {tab.promo_1plus1 && (
                             <div className="mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-sm font-bold animate-pulse">
                                 <Gift className="w-4 h-4" /> 1+1 FREE

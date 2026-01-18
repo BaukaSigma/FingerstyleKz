@@ -61,18 +61,24 @@ export function HomeTabCard({ tab, locale }: HomeTabCardProps) {
                         )}
                     </div>
 
-                    {/* Footer / Specs */}
                     <div className="pt-4 mt-4 border-t border-white/5 flex items-center justify-between">
-                        <div className="flex gap-3 text-xs text-muted-foreground">
+                        <div className="flex flex-col">
+                            {tab.original_price_kzt && tab.original_price_kzt > tab.price_kzt && (
+                                <span className="text-xs text-red-400/80 line-through decoration-red-400/50">
+                                    {formatPrice(tab.original_price_kzt)}
+                                </span>
+                            )}
+                            <span className={`text-lg font-bold ${tab.original_price_kzt ? 'text-green-400' : 'text-primary'}`}>
+                                {formatPrice(tab.price_kzt)}
+                            </span>
+                        </div>
+                        <div className="flex items-center text-xs text-muted-foreground/80">
                             {tab.formats?.includes('PDF') && (
                                 <span className="flex items-center gap-1"><FileText className="w-3 h-3" /> PDF</span>
                             )}
                             {tab.formats?.includes('GPX') && (
                                 <span className="flex items-center gap-1"><Music2 className="w-3 h-3" /> GPX</span>
                             )}
-                        </div>
-                        <div className="text-lg font-bold text-white group-hover:text-primary transition-colors">
-                            {formatPrice(tab.price_kzt)}
                         </div>
                     </div>
                 </div>
